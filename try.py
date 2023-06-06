@@ -3,8 +3,8 @@ import webbrowser
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
 
+from googleapiclient.errors import HttpError
 import os
-
 
 #### LOAD CREDENTIALS
 CREDENTIALS_PATH = None
@@ -72,8 +72,6 @@ def execute_drive_query(query):
     return files
 
 
-
-
 def list_all_audio_files():
     #  This Query Works For Me.  
     #  You need to make sure the folder is shared with your service account email (in your credentails folder)
@@ -87,10 +85,6 @@ def list_all_audio_files():
         print(file['name'], file['id'])
 
     return audio_files
-
-
-
-
 
 
 def get_shared_files():
@@ -123,7 +117,6 @@ def main():
     audio_files = list_all_audio_files()
 
 
-    
 
     # Create a simple Tkinter GUI to display the file names
     root = tk.Tk()
