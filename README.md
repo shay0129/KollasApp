@@ -1,7 +1,7 @@
 # KollasApp
 Stage 1: Creating Credentials - credentials.py
 
-Stage 2: Using Credentials (credentials) and Creating a Service (service) and a Query (query) to Search (search_file) for files on the server and add them to a list (folder) - request_files.py
+Stage 2: Using Credentials (credentials) and creating a Service and a Query to Search_File for files on the server and add them to a list Folders - request_files.py
 {
     Service: This parameter is the Google Drive service object used to make API requests.
 
