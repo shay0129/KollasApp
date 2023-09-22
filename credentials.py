@@ -4,17 +4,23 @@ from dotenv import load_dotenv
 from google.oauth2.service_account import Credentials
 
 def load_google_credentials():
-    CREDENTIALS_PATH = None
-    try:
-        load_dotenv()
-        CREDENTIALS_PATH = os.getenv('GOOGLE_CREDENTIALS_PATH')
-        if CREDENTIALS_PATH is not None:
-            print("Found CREDENTIALS_PATH in the .env file")
-    except ImportError:
-        print("dotenv library is not installed.")
-        pass
+    # Combine environment variables with default values
+    dotenv_path = os.path.join("C:/My Projects/KollasApp/secret/", '.env')
+    load_dotenv(dotenv_path)
+    print("dotenv succeeded")
+    CREDENTIALS_PATH = os.getenv('GOOGLE_CREDENTIALS_PATH')
     
-    if CREDENTIALS_PATH is None:
-        CREDENTIALS_PATH = "C:/My Projects/KollasApp/audio_file_manager_service_account.json"
-    credentials = Credentials.from_service_account_file(CREDENTIALS_PATH, scopes=['https://www.googleapis.com/auth/drive.readonly'])
-    return credentials
+    if CREDENTIALS_PATH is not None:
+        print("Found CREDENTIALS_PATH in the .env file")
+    else:
+        print("Using default path")
+        CREDENTIALS_PATH = "C:/My Projects/KollasApp/secret/audio_file_manager_service_account.json"
+    
+    try:
+        credentials = Credentials.from_service_account_file(CREDENTIALS_PATH, scopes=['https://www.googleapis.com/auth/drive.readonly'])
+        print("Credentials are good")
+        return credentials
+    except Exception as e:
+        print(f"Error loading credentials: {e}")
+        return None
+
