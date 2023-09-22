@@ -4,6 +4,8 @@ Stage 1: Creating Credentials - credentials.py
 Stage 2: Using Credentials (credentials) and creating a Service and a Query to Search_File for files on the server and add them to a list Folders - request_files.py
 {
     Service: This parameter is the Google Drive service object used to make API requests.
+}
+{
     Query: The query is defined to find all folders in Google Drive with the MIME type of "application/vnd.google-apps.folder" that are not in the trash (i.e., they are not in the trash).
 }
 
