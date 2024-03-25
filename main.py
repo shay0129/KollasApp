@@ -1,3 +1,4 @@
+# main.py
 # Takes buttons from display, and show it on tkinter window
 import tkinter as tk
 import logging
