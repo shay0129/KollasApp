@@ -2,6 +2,7 @@
 import tkinter as tk
 import logging
 from display import display_sub_folders_as_buttons
+
 def main():
     logging.basicConfig(level=logging.INFO)
 
