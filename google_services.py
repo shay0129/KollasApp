@@ -1,8 +1,8 @@
+# google_services.py
 # Gets credentials, load it and build a service object
-
-import logging
 from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
+import logging
 
 def load_google_credentials():
     # Hardcode the path to the Google credentials JSON file
