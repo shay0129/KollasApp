@@ -1,7 +1,7 @@
+# request.py
 # Request folders and audio files from Google's server, download a temporary file by url, and play it
 from googleapiclient.errors import HttpError
 from utils import transform_google_drive_url
-from pygame import mixer
 import logging
 import requests
 
@@ -49,33 +49,3 @@ def download_google_drive_audio(url):
     except Exception as e:
         logging.error(f"Error downloading audio: {e}")
         return None
-
-def play_audio_from_url(url):
-    audio_filename = download_google_drive_audio(url)
-    if audio_filename:
-        try:
-            # Initialize Pygame mixer once
-            if not mixer.get_init():
-                mixer.init()
-
-            mixer.music.load(audio_filename)
-            mixer.music.play()
-        except Exception as e:
-            logging.error(f"Error playing audio: {e}")
-    else:
-        logging.error("Failed to download audio file")
-
-def play_audio(url):
-    audio_filename = download_google_drive_audio(url)
-    if audio_filename:
-        try:
-            # Initialize Pygame mixer once
-            if not mixer.get_init():
-                mixer.init()
-
-            mixer.music.load(audio_filename)
-            mixer.music.play()
-        except Exception as e:
-            logging.error(f"Error playing audio: {e}")
-    else:
-        logging.error("Failed to download audio file")
