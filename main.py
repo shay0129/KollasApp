@@ -1,6 +1,7 @@
+# Takes buttons from display, and show it on tkinter window
 import tkinter as tk
 import logging
-from server import display_sub_folders_as_buttons
+from display import display_sub_folders_as_buttons
 def main():
     logging.basicConfig(level=logging.INFO)
 
