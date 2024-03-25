@@ -24,16 +24,6 @@ def search_files(service, query):
 
     return files
 
-def get_sub_folders_and_files(service, parent_folder_id=None):
-    if parent_folder_id is None:
-        query = "trashed=false"
-    else:
-        query = f"'{parent_folder_id}' in parents and trashed=false"
-
-    folders_and_files = search_files(service, query)
-
-    return folders_and_files
-
 def download_google_drive_audio(url):
     try:
         transformed_url = transform_google_drive_url(url)
