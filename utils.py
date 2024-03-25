@@ -1,4 +1,4 @@
-# kollasapp/utils.py
+# Modifyies url for direct download as User Content
 from urllib.parse import urlparse, parse_qs
 
 def transform_google_drive_url(url):
