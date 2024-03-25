@@ -1,11 +1,10 @@
+from googleapiclient.errors import HttpError
+from utils import transform_google_drive_url
+from google_services import get_service
+from pygame import mixer
 import tkinter as tk
 import logging
-from pygame import mixer
-from google.oauth2.service_account import Credentials
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
 import requests
-from utils import transform_google_drive_url
 
 def download_google_drive_audio(url):
     try:
@@ -90,31 +89,6 @@ def play_audio(url):
             logging.error(f"Error playing audio: {e}")
     else:
         logging.error("Failed to download audio file")
-        
-def load_google_credentials():
-    # Hardcode the path to the Google credentials JSON file
-    credentials_path = "C:/My Projects/KollasApp/secret_files/config/kollas_app_service_account.json"
-
-    try:
-        # Load credentials from the JSON file
-        credentials = Credentials.from_service_account_file(credentials_path, scopes=['https://www.googleapis.com/auth/drive'])
-        logging.info("Credentials loaded successfully!")
-        return credentials
-    except Exception as e:
-        logging.error(f"Error loading credentials: {e}")
-        return None
-
-def get_service():
-    # Load Google Drive credentials
-    my_credentials = load_google_credentials()
-
-    if my_credentials:
-        # Build the Google Drive service object
-        drive_service = build('drive', 'v3', credentials=my_credentials)
-        return drive_service
-    else:
-        logging.error("Failed to load Google Drive credentials!")
-        return None
 
 def get_sub_folders_and_files(service, parent_folder_id=None):
     if parent_folder_id is None:
